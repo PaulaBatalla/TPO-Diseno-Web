@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #0f0f0f;
+    background-color: #212529;
     color: #f5f5f5;
     scroll-behavior: smooth;
 }
@@ -24,13 +24,13 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(15, 15, 15, 0.95);
+    background-color: #1b263b;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 10%;
     z-index: 1000;
-    border-bottom: 2px solid #e50914;
+    border-bottom: 2px solid #415a77;
 }
 
 .logo {
@@ -46,7 +46,7 @@ header {
 
 .logo h1 {
     font-size: 1.5rem;
-    color: #e50914;
+    color: white;
 }
 
 .nav a {
@@ -58,7 +58,7 @@ header {
 }
 
 .nav a:hover {
-    color: #e50914;
+    color: #415a77;
 }
 
 .buscador input {
@@ -95,7 +95,7 @@ header {
 }
 
 .btn {
-    background-color: #e50914;
+    background-color: #415a77;
     color: #fff;
     border: none;
     padding: 10px 25px;
@@ -106,11 +106,11 @@ header {
 }
 
 .btn:hover {
-    background-color: #b0060f;
+    background-color: #415a77;
 }
 
 #catalogo {
-    background-color: #121212;
+    background-color: #212529;
     padding-top: 100px;
 }
 
@@ -146,7 +146,7 @@ header {
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 15px #e5091440;
+    box-shadow: 0 0 15px #415a77;
 }
 
 .card img {
@@ -160,7 +160,7 @@ header {
 }
 
 .card-info h3 {
-    color: #e50914;
+    color: #415a77;
     margin-bottom: 10px;
 }
 
@@ -200,11 +200,11 @@ footer {
     background-color: #0f0f0f;
     padding: 20px;
     text-align: center;
-    border-top: 2px solid #e50914;
+    border-top: 2px solid #415a77;
 }
 
 footer .redes a {
-    color: #e50914;
+    color: #0b2545;
     margin: 0 10px;
     font-size: 1.3rem;
 }
