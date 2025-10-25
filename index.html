@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Series y Películas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="inicio">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+            <h1>CineVerse</h1>
+        </div>
+
+        <nav class="nav">
+            <a href="#inicio">Inicio</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <div class="buscador">
+            <input type="text" id="buscador" placeholder="Buscar por título o actor...">
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Descubrí tus series y películas favoritas</h2>
+            <p>Elegí qué ver, filtrá por género y encontrá dónde mirarlas.</p>
+            <a href="#catalogo" class="btn">Explorar catálogo</a>
+        </div>
+    </section>
+
+    <main id="catalogo">
+        <h2>Catálogo</h2>
+
+        <div class="filtros">
+            <button class="btn tipo" data-tipo="series">Series</button>
+            <button class="btn tipo" data-tipo="peliculas">Películas</button>
+
+            <select id="genero">
+                <option value="">Seleccionar género</option>
+                <option value="comedia">Comedia</option>
+                <option value="drama">Drama</option>
+                <option value="accion">Acción</option>
+                <option value="fantasia">Fantasía</option>
+                <option value="terror">Terror</option>
+            </select>
+        </div>
+        
+
+        <div id="contenedor-catalogo" class="grid-catalogo">
+            <!-- Ejemplo de card -->
+            <!--
+            <div class="card">
+                <img src="images/posters/serie1.jpg" alt="Poster">
+                <div class="card-info">
+                    <h3>Breaking Bad</h3>
+                    <p><strong>Género:</strong> Drama / Crimen</p>
+                    <p><strong>Año:</strong> 2008</p>
+                    <p><strong>Temporadas:</strong> 5</p>
+                    <p><strong>Elenco:</strong> Bryan Cranston, Aaron Paul</p>
+                    <p class="sinopsis">Un profesor de química se convierte en fabricante de metanfetaminas.</p>
+                    <p><strong>Plataforma:</strong> Netflix</p>
+                </div>
+            </div>
+            -->
+        </div>
+    </main>
+
+    <section id="nosotros" class="nosotros">
+        <h2>Sobre nosotros</h2>
+        <p>Somos un sitio dedicado a ayudarte a encontrar qué mirar según tus gustos. 
+           Nuestra misión es conectar a los amantes del cine y las series con las mejores producciones disponibles en las plataformas más populares.</p>
+    </section>
+
+    <section id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <form id="form-contacto">
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
+            <input type="email" id="email" placeholder="Tu email" required>
+            <textarea id="mensaje" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 CineVerse | Desarrollado por Paula y Mateo</p>
+        <div class="redes">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a2e0d3c2c7.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>
