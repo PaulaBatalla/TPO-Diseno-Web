@@ -72,26 +72,68 @@ header {
 
 .hero {
     height: 90vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('images/banner.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 73px;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel, .carousel-inner {
+    height: 100%;
+    position: relative;
+}
+
+.carousel-item {
+    height: 100%;
+    background-color: #000;
+}
+
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    max-width: 100%;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+.carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+    padding: 0 20px;
+    z-index: 2;
     text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
 }
 
-.hero-content {
-    max-width: 700px;
-}
-
-.hero h2 {
-    font-size: 2.5rem;
+.carousel-caption h2 {
+    font-size: 3rem;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
 }
 
-.hero p {
+.carousel-caption p {
     margin-bottom: 30px;
-    font-size: 1.1rem;
-    color: #ccc;
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .btn {
@@ -112,6 +154,14 @@ header {
 #catalogo {
     background-color: #212529;
     padding-top: 100px;
+}
+
+#catalogo h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    color: #f5f5f5;
+    padding: 0 20px;
 }
 
 .filtros {
@@ -157,11 +207,102 @@ header {
 
 .card-info {
     padding: 15px;
+    color: #f5f5f5;
 }
 
 .card-info h3 {
     color: #415a77;
     margin-bottom: 10px;
+}
+
+.card-info p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.card-info .sinopsis {
+    font-style: italic;
+    color: #ccc;
+    margin: 10px 0;
+}
+
+.destacado {
+    background-color: #212529;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.destacado h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    color: #f5f5f5;
+    padding: 12px 20px;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 0;
+    background-color: #1a1a1a;
+    border-radius: 30px;
+    padding: 5px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-option {
+    background-color: transparent;
+    color: #ccc;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.toggle-option:hover {
+    color: #fff;
+}
+
+.toggle-option.active {
+    background: linear-gradient(135deg, #415a77 0%, #598392 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(65, 90, 119, 0.4);
+}
+
+/* Estilos específicos para cards de destacado - más compactas */
+#contenedor-destacado .card {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+#contenedor-destacado .card img {
+    height: 280px;
+}
+
+#contenedor-destacado .card-info {
+    padding: 10px;
+    text-align: center;
+}
+
+#contenedor-destacado .card-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+/* Grid más compacto para destacado */
+#contenedor-destacado.grid-catalogo {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
 }
 
 .nosotros {
