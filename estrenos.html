@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Catálogo - CineVerse</title>
+    <title>Estrenos - CineVerse</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="catalogo.css">
+    <link rel="stylesheet" href="estrenos.css">
     <link rel="icon" href="images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -24,31 +24,14 @@
             <a href="index.html#nosotros">Nosotros</a>
             <a href="index.html#contacto">Contacto</a>
         </nav>
-
-        <div class="buscador">
-            <input type="text" id="buscador" placeholder="Buscar por título o actor...">
-        </div>
     </header>
 
-    <main id="catalogo">
-        <h2>Catálogo</h2>
+    <main id="estrenos">
+        <h2>Próximos Estrenos</h2>
+        <p class="subtitulo">Descubrí los trailers de las películas y series más esperadas</p>
 
-        <div class="filtros">
-            <button class="btn tipo" data-tipo="series">Series</button>
-            <button class="btn tipo" data-tipo="peliculas">Películas</button>
-
-            <select id="genero">
-                <option value="">Seleccionar género</option>
-                <option value="comedia">Comedia</option>
-                <option value="drama">Drama</option>
-                <option value="accion">Acción</option>
-                <option value="fantasia">Fantasía</option>
-                <option value="terror">Terror</option>
-            </select>
-        </div>
-        
-        <div id="contenedor-catalogo" class="grid-catalogo">
-            <!-- Las cards se generan dinámicamente con JavaScript -->
+        <div id="contenedor-estrenos" class="contenedor-estrenos">
+            <!-- Los items del acordeón se generan dinámicamente con JavaScript -->
         </div>
     </main>
 
@@ -63,7 +46,7 @@
 
     <script src="https://kit.fontawesome.com/a2e0d3c2c7.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="catalogo.js"></script>
+    <script src="estrenos.js"></script>
 </body>
 </html>
 

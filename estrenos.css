@@ -1,0 +1,346 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #212529;
+    color: #f5f5f5;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1b263b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10%;
+    z-index: 1000;
+    border-bottom: 2px solid #415a77;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.logo h1 a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.logo h1 a:hover {
+    opacity: 0.8;
+}
+
+.nav a {
+    color: #f5f5f5;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: #415a77;
+}
+
+/* Main Estrenos */
+#estrenos {
+    padding: 120px 5% 60px 5%;
+    background-color: #212529;
+}
+
+#estrenos h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    color: #f5f5f5;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+/* Contenedor de Estrenos */
+.contenedor-estrenos {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Item del Acordeón Horizontal */
+.estreno-item {
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #2a2a2a;
+    transition: all 0.4s ease;
+}
+
+.estreno-item.expandido {
+    border-color: #415a77;
+    box-shadow: 0 8px 25px rgba(65, 90, 119, 0.3);
+}
+
+/* Contenedor principal de cada item */
+.estreno-contenedor {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    min-height: 250px;
+}
+
+/* Sección visible (Poster + Info + Flecha) */
+.estreno-visible {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+    transition: width 0.5s ease;
+}
+
+.estreno-item.expandido .estreno-visible {
+    width: 45%;
+}
+
+/* Poster */
+.estreno-poster {
+    width: 180px;
+    height: 250px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.estreno-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Info básica */
+.estreno-info {
+    flex-grow: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.estreno-info h3 {
+    color: #415a77;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.estreno-info p {
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Botón/Flecha para expandir */
+.estreno-toggle {
+    flex-shrink: 0;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #415a77;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.estreno-toggle:hover {
+    background-color: #598392;
+}
+
+.estreno-toggle span {
+    font-size: 2rem;
+    color: #fff;
+    transition: transform 0.5s ease;
+}
+
+.estreno-item.expandido .estreno-toggle span {
+    transform: rotate(180deg);
+}
+
+/* Contenido expandible (Trailer + Descripción extensa) */
+.estreno-expandible {
+    display: flex;
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.estreno-item.expandido .estreno-expandible {
+    width: 55%;
+    opacity: 1;
+}
+
+/* Contenedor del trailer */
+.trailer-contenedor {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #1f1f1f;
+}
+
+.trailer-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.trailer-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Descripción extensa */
+.descripcion-extensa {
+    flex: 0 0 350px;
+    padding: 25px;
+    background-color: #252525;
+    color: #e0e0e0;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    overflow-y: auto;
+    max-height: 250px;
+}
+
+.descripcion-extensa strong {
+    color: #415a77;
+}
+
+/* Footer */
+footer {
+    background-color: #0f0f0f;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #415a77;
+}
+
+footer .redes a {
+    color: #0b2545;
+    margin: 0 10px;
+    font-size: 1.3rem;
+}
+
+footer .redes a:hover {
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .estreno-item.expandido .estreno-visible {
+        width: 40%;
+    }
+    
+    .estreno-item.expandido .estreno-expandible {
+        width: 60%;
+    }
+    
+    .descripcion-extensa {
+        flex: 0 0 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .estreno-contenedor {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .estreno-visible {
+        width: 100% !important;
+        flex-direction: column;
+    }
+    
+    .estreno-poster {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .estreno-toggle {
+        width: 100%;
+        height: 60px;
+    }
+    
+    .estreno-toggle span {
+        transform: rotate(90deg);
+    }
+    
+    .estreno-item.expandido .estreno-toggle span {
+        transform: rotate(-90deg);
+    }
+    
+    .estreno-expandible {
+        width: 100% !important;
+        flex-direction: column;
+    }
+    
+    .trailer-contenedor {
+        flex: none;
+        padding: 15px;
+    }
+    
+    .descripcion-extensa {
+        flex: none;
+        max-height: none;
+    }
+
+    #estrenos {
+        padding-top: 150px;
+    }
+}
+
