@@ -1,3 +1,42 @@
+// Arrays simples con la información de productos
+const productosImagenes = [
+    'producto1.jpg',
+    'producto2.jpg',
+    'producto3.jpg',
+    'producto4.jpg',
+    'producto5.jpg',
+    'producto6.jpg'
+];
+
+const productosNombres = [
+    'Remera Breaking Bad',
+    'Taza The Bear',
+    'Poster Dune 2',
+    'Gorra Bridgerton',
+    'Libreta Percy Jackson',
+    'Funko Pop Spider-Man'
+];
+
+const productosCategorias = [
+    'Ropa',
+    'Accesorios',
+    'Decoración',
+    'Accesorios',
+    'Papelería',
+    'Coleccionables'
+];
+
+const productosDescripciones = [
+    'Remera 100% algodón con el icónico logo de Breaking Bad. Disponible en varios talles.',
+    'Taza de cerámica con diseño exclusivo de The Bear. Ideal para tu café o té favorito.',
+    'Poster de alta calidad de Dune: Part Two. Perfecto para decorar tu espacio.',
+    'Gorra ajustable con bordado de Bridgerton. Estilo clásico y elegante.',
+    'Libreta de 200 páginas con tapa dura. Diseño inspirado en Percy Jackson and the Olympians.',
+    'Figura Funko Pop de Spider-Man Far From Home. Edición limitada para coleccionistas.'
+];
+
+const productosPrecios = [15.99, 12.50, 9.99, 18.75, 14.25, 24.99];
+
 // Carrito de compras
 let carrito = [];
 
@@ -268,8 +307,37 @@ function actualizarBotonesPaginacion() {
     btnSiguiente.disabled = (paginaActual === totalPaginas);
 }
 
+// Generar productos dinámicamente
+function generarProductos() {
+    const contenedor = document.getElementById('productos-container');
+    contenedor.innerHTML = ''; // Limpiar contenedor
+    
+    for (let i = 0; i < productosImagenes.length; i++) {
+        const productoHTML = `
+            <div class="producto-item" data-id="${i + 1}">
+                <div class="producto-imagen">
+                    <img src="images/${productosImagenes[i]}" alt="${productosNombres[i]}">
+                </div>
+                <div class="producto-info">
+                    <h3>${productosNombres[i]}</h3>
+                    <p class="categoria">${productosCategorias[i]}</p>
+                    <p class="descripcion">${productosDescripciones[i]}</p>
+                </div>
+                <div class="producto-accion">
+                    <p class="precio">$${productosPrecios[i].toFixed(2)}</p>
+                    <button class="btn-agregar" onclick="agregarAlCarrito(${i + 1}, '${productosNombres[i]}', ${productosPrecios[i]}, 'images/${productosImagenes[i]}')">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        `;
+        contenedor.innerHTML += productoHTML;
+    }
+}
+
 // Inicializar carrito y paginación al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
+    generarProductos(); // Generar productos primero
     actualizarCarrito();
     inicializarPaginacion();
 });
