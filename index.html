@@ -13,19 +13,16 @@
     <header id="inicio">
         <div class="logo">
             <img src="images/logo.png" alt="Logo">
-            <h1>CineVerse</h1>
+            <h1><a href="index.html">CineVerse</a></h1>
         </div>
 
         <nav class="nav">
             <a href="#inicio">Inicio</a>
-            <a href="#catalogo">Catálogo</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="merchandising.html">Merchandising</a>
             <a href="#nosotros">Nosotros</a>
             <a href="#contacto">Contacto</a>
         </nav>
-
-        <div class="buscador">
-            <input type="text" id="buscador" placeholder="Buscar por título o actor...">
-        </div>
     </header>
 
     <section class="hero">
@@ -41,7 +38,7 @@
                     <div class="carousel-caption">
                         <h2>Descubrí tus series y películas favoritas</h2>
                         <p>Elegí qué ver, filtrá por género y encontrá dónde mirarlas.</p>
-                        <a href="#catalogo" class="btn">Explorar catálogo</a>
+                        <a href="catalogo.html" class="btn">Explorar catálogo</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -49,7 +46,7 @@
                     <div class="carousel-caption">
                         <h2>Las mejores series dramáticas</h2>
                         <p>Sumergite en historias intensas y apasionantes</p>
-                        <a href="#catalogo" class="btn">Ver más</a>
+                        <a href="catalogo.html" class="btn">Ver más</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -57,7 +54,7 @@
                     <div class="carousel-caption">
                         <h2>Comedias para toda la familia</h2>
                         <p>Encontrá el contenido perfecto para cada momento</p>
-                        <a href="#catalogo" class="btn">Descubrir</a>
+                        <a href="catalogo.html" class="btn">Descubrir</a>
                     </div>
                 </div>
             </div>
@@ -71,148 +68,6 @@
             </button>
         </div>
     </section>
-
-    <main id="catalogo">
-        <h2>Catálogo</h2>
-
-        <div class="filtros">
-            <button class="btn tipo" data-tipo="series">Series</button>
-            <button class="btn tipo" data-tipo="peliculas">Películas</button>
-
-            <select id="genero">
-                <option value="">Seleccionar género</option>
-                <option value="comedia">Comedia</option>
-                <option value="drama">Drama</option>
-                <option value="accion">Acción</option>
-                <option value="fantasia">Fantasía</option>
-                <option value="terror">Terror</option>
-            </select>
-        </div>
-        
-        <div id="contenedor-catalogo" class="grid-catalogo">
-            
-            <div class="card" data-tipo="series" data-genero="drama crimen">
-                <img src="images/breakingbad.jpg" alt="Poster Breaking Bad">
-                <div class="card-info">
-                    <h3>Breaking Bad</h3>
-                    <p><strong>Género:</strong> Drama / Crimen</p>
-                    <p><strong>Año:</strong> 2008</p>
-                    <p><strong>Elenco:</strong> Bryan Cranston, Aaron Paul, Anna Gunn</p>
-                    <p class="sinopsis">Un profesor de química se convierte en fabricante de metanfetaminas para asegurar el futuro de su familia.</p>
-                    <p><strong>Plataforma:</strong> Netflix</p>
-                </div>
-            </div>
-
-            <div class="card" data-tipo="series" data-genero="drama romantica">
-                <img src="images/bridgerton.jpg" alt="Poster Bridgerton">
-                <div class="card-info">
-                    <h3>Bridgerton</h3>
-                    <p><strong>Género:</strong> Drama / Romántica</p>
-                    <p><strong>Año:</strong> 2020</p>
-                    <p><strong>Elenco:</strong> Regé-Jean Page, Phoebe Dynevor, Nicola Coughlan</p>
-                    <p class="sinopsis">En la alta sociedad londinense del siglo XIX, las familias compiten por amor, poder y reputación.</p>
-                    <p><strong>Plataforma:</strong> Netflix</p>
-                </div>
-            </div>
-
-            <div class="card" data-tipo="series" data-genero="drama comedia">
-                <img src="images/thebear.jpg" alt="Poster The Bear">
-                <div class="card-info">
-                    <h3>The Bear</h3>
-                    <p><strong>Género:</strong> Drama / Comedia</p>
-                    <p><strong>Año:</strong> 2022</p>
-                    <p><strong>Elenco:</strong> Jeremy Allen White, Ayo Edebiri, Ebon Moss-Bachrach</p>
-                    <p class="sinopsis">Un joven chef regresa a Chicago para administrar el restaurante de su familia después de una pérdida.</p>
-                    <p><strong>Plataforma:</strong> Disney+</p>
-                </div>
-            </div>
-
-            <div class="card" data-tipo="series" data-genero="fantasia aventura">
-                <img src="images/percyjackson.jpg" alt="Poster Percy Jackson and the Olympians">
-                <div class="card-info">
-                    <h3>Percy Jackson and the Olympians</h3>
-                    <p><strong>Género:</strong> Fantasía / Aventura</p>
-                    <p><strong>Año:</strong> 2024</p>
-                    <p><strong>Elenco:</strong> Walker Scobell, Leah Sava Jeffries, Aryan Simhadri</p>
-                    <p class="sinopsis">Percy descubre que es hijo de un dios griego y debe enfrentarse a desafíos épicos en su búsqueda de identidad.</p>
-                    <p><strong>Plataforma:</strong> Disney+</p>
-                </div>
-            </div>
-
-            <div class="card" data-tipo="series" data-genero="superheroes misterio">
-                <img src="images/agathaallalong.jpg" alt="Poster Agatha All Along">
-                <div class="card-info">
-                    <h3>Agatha All Along</h3>
-                    <p><strong>Género:</strong> Superhéroes / Misterio</p>
-                    <p><strong>Año:</strong> 2024</p>
-                    <p><strong>Elenco:</strong> Kathryn Hahn, Aubrey Plaza, Joe Locke</p>
-                    <p class="sinopsis">Una historia mágica centrada en Agatha Harkness, la carismática bruja del universo Marvel.</p>
-                    <p><strong>Plataforma:</strong> Disney+</p>
-                </div>
-            </div>
-
-            <div class="card" data-tipo="peliculas" data-genero="musical fantasia">
-                <img src="images/wicked.jpg" alt="Poster Wicked">
-                <div class="card-info">
-                    <h3>Wicked</h3>
-                    <p><strong>Género:</strong> Musical / Fantasía</p>
-                    <p><strong>Año:</strong> 2024</p>
-                    <p><strong>Elenco:</strong> Cynthia Erivo, Ariana Grande, Jonathan Bailey</p>
-                    <p class="sinopsis">La historia de las dos brujas de Oz antes de la llegada de Dorothy. Amistad, poder y destino se entrelazan.</p>
-                    <p><strong>Plataforma:</strong> Peacock</p>
-                </div>
-            </div>
-
-            <div class="card" data-tipo="peliculas" data-genero="accion cienciaficcion">
-                <img src="images/dune2.jpg" alt="Poster Dune: Part Two">
-                <div class="card-info">
-                    <h3>Dune: Part Two</h3>
-                    <p><strong>Género:</strong> Ciencia Ficción / Aventura</p>
-                    <p><strong>Año:</strong> 2024</p>
-                    <p><strong>Elenco:</strong> Timothée Chalamet, Zendaya, Austin Butler</p>
-                    <p class="sinopsis">Paul Atreides une al pueblo Fremen mientras busca venganza contra los conspiradores que destruyeron su familia.</p>
-                    <p><strong>Plataforma:</strong> HBO Max</p>
-                </div>
-            </div>
-
-            <div class="card" data-tipo="peliculas" data-genero="drama historico">
-                <img src="images/oppenheimer.jpg" alt="Poster Oppenheimer">
-                <div class="card-info">
-                    <h3>Oppenheimer</h3>
-                    <p><strong>Género:</strong> Drama / Histórico</p>
-                    <p><strong>Año:</strong> 2023</p>
-                    <p><strong>Elenco:</strong> Cillian Murphy, Emily Blunt, Robert Downey Jr.</p>
-                    <p class="sinopsis">La vida del físico J. Robert Oppenheimer y el desarrollo del Proyecto Manhattan durante la Segunda Guerra Mundial.</p>
-                    <p><strong>Plataforma:</strong> Prime Video</p>
-                </div>
-            </div>
-
-            <div class="card" data-tipo="peliculas" data-genero="animacion aventura">
-                <img src="images/moana2.jpg" alt="Poster Moana 2">
-                <div class="card-info">
-                    <h3>Moana 2</h3>
-                    <p><strong>Género:</strong> Animación / Aventura</p>
-                    <p><strong>Año:</strong> 2024</p>
-                    <p><strong>Elenco:</strong> Auli‘i Cravalho, Dwayne Johnson</p>
-                    <p class="sinopsis">Moana emprende un nuevo viaje a los mares del sur en busca de su identidad y el futuro de su pueblo.</p>
-                    <p><strong>Plataforma:</strong> Disney+</p>
-                </div>
-            </div>
-
-            <div class="card" data-tipo="peliculas" data-genero="accion superheroes aventura">
-                <img src="images/spiderman.jpg" alt="Poster Spider-Man: Far From Home">
-                <div class="card-info">
-                    <h3>Spider-Man: Far From Home</h3>
-                    <p><strong>Género:</strong> Acción / Superhéroes / Aventura</p>
-                    <p><strong>Año:</strong> 2019</p>
-                    <p><strong>Elenco:</strong> Tom Holland, Zendaya, Jake Gyllenhaal</p>
-                    <p class="sinopsis">Tras los eventos de Endgame, Peter Parker viaja por Europa mientras enfrenta nuevas amenazas y responsabilidades como Spider-Man.</p>
-                    <p><strong>Plataforma:</strong> Disney+</p>
-                </div>
-            </div>
-
-        </div>
-    </main>
 
     <section id="destacado" class="destacado">
         <h2>Lo más destacado</h2>

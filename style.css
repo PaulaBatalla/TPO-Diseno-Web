@@ -49,6 +49,16 @@ header {
     color: white;
 }
 
+.logo h1 a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.logo h1 a:hover {
+    opacity: 0.8;
+}
+
 .nav a {
     color: #f5f5f5;
     margin: 0 15px;
@@ -59,15 +69,6 @@ header {
 
 .nav a:hover {
     color: #415a77;
-}
-
-.buscador input {
-    background: #222;
-    border: 1px solid #444;
-    border-radius: 20px;
-    padding: 8px 15px;
-    color: #fff;
-    outline: none;
 }
 
 .hero {
@@ -149,35 +150,6 @@ header {
 
 .btn:hover {
     background-color: #415a77;
-}
-
-#catalogo {
-    background-color: #212529;
-    padding-top: 100px;
-}
-
-#catalogo h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.2rem;
-    color: #f5f5f5;
-    padding: 0 20px;
-}
-
-.filtros {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.filtros select {
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: none;
-    background-color: #222;
-    color: #fff;
 }
 
 .grid-catalogo {
@@ -314,6 +286,10 @@ header {
     max-width: 800px;
     margin: 20px auto;
     color: #ccc;
+    padding: 20px;
+    background-color: rgba(65, 90, 119, 0.08);
+    border-radius: 10px;
+    border-left: 3px solid #415a77;
 }
 
 .contacto {
