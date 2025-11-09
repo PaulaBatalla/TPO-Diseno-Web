@@ -144,6 +144,21 @@ document.addEventListener('DOMContentLoaded', function() {
     generarCatalogo();
     
     const buscador = document.getElementById('buscador');
+    try {
+        const params = new URLSearchParams(window.location.search);
+        let q = params.get('q') || '';
+        if (q) {
+            q = q.replace(/\+/g, ' ');
+            try { q = decodeURIComponent(q); } catch (e) { /* ignore decode errors */ }
+            buscador.value = q;
+            // Aplicar filtro inmediatamente cuando venimos con ?q=...
+            filtrarCatalogo();
+            // También disparar evento 'input' por si hay otros listeners
+            buscador.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+    } catch (e) {
+        // ignore URL parsing errors
+    }
     const botonesTipo = document.querySelectorAll('.tipo');
     const selectGenero = document.getElementById('genero');
 
@@ -176,6 +191,51 @@ document.addEventListener('DOMContentLoaded', function() {
                 card.style.display = 'none';
             }
         });
+
+            // Después de filtrar, si hay resultados visibles, devolver el primero y resaltarlo.
+            // Si no hay resultados, mostrar mensaje amigable.
+            const contenedor = document.getElementById('contenedor-catalogo');
+            const allCards = Array.from(document.querySelectorAll('.card'));
+            const visibles = allCards.filter(c => c.style.display !== 'none');
+
+            if (visibles.length === 0) {
+                // Mostrar mensaje de 'no encontrado'
+                let msg = document.getElementById('no-result-msg');
+                if (!msg) {
+                    msg = document.createElement('div');
+                    msg.id = 'no-result-msg';
+                    msg.style.padding = '2rem';
+                    msg.style.textAlign = 'center';
+                    msg.style.color = '#666';
+                    msg.style.fontStyle = 'italic';
+                    contenedor.appendChild(msg);
+                }
+                const query = buscador.value.trim();
+                msg.textContent = query ? `No se encontraron resultados para "${query}"` : 'No se encontraron resultados.';
+            } else {
+                // Eliminar posible mensaje previo
+                const prevMsg = document.getElementById('no-result-msg');
+                if (prevMsg) prevMsg.remove();
+
+                const primerVisible = visibles[0];
+                // Remover cualquier highlight previo
+                document.querySelectorAll('.card.highlight-temporal').forEach(el => {
+                    el.classList.remove('highlight-temporal');
+                    el.style.transition = '';
+                    el.style.boxShadow = '';
+                });
+                // Añadir un highlight temporal y scrollear al centro
+                primerVisible.classList.add('highlight-temporal');
+                primerVisible.style.boxShadow = '0 0 0 4px rgba(255,215,0,0.25)';
+                primerVisible.style.transition = 'box-shadow 400ms ease-in-out';
+                try { primerVisible.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { /* ignore */ }
+                // Quitar el highlight después de 1.5s
+                setTimeout(() => {
+                    primerVisible.classList.remove('highlight-temporal');
+                    primerVisible.style.transition = '';
+                    primerVisible.style.boxShadow = '';
+                }, 1500);
+            }
     }
 
     // Event listener para el buscador
@@ -200,10 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener para el select de género
     selectGenero.addEventListener('change', filtrarCatalogo);
 
-    // Mostrar todas las tarjetas al inicio
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.style.display = 'block';
-    });
+    // Aplicar filtrado inicial (si no hay filtros, esto mostrará todo)
+    filtrarCatalogo();
 });
 
