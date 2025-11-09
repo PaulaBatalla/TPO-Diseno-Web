@@ -123,7 +123,7 @@ function generarCatalogo() {
     
     for (let i = 0; i < catalogoImagenes.length; i++) {
         const cardHTML = `
-            <div class="card" data-tipo="${catalogoTipos[i]}" data-genero="${catalogoGeneros[i]}">
+                <div class="card" data-tipo="${catalogoTipos[i]}" data-genero="${catalogoGeneros[i]}" data-year="${catalogoAnios[i]}">
                 <img src="images/${catalogoImagenes[i]}" alt="Poster ${catalogoTitulos[i]}">
                 <div class="card-info">
                     <h3>${catalogoTitulos[i]}</h3>
@@ -139,9 +139,59 @@ function generarCatalogo() {
     }
 }
 
+// Función para ordenar las tarjetas
+function sortCards(sortBy, direction) {
+    const container = document.getElementById('contenedor-catalogo');
+    const cards = Array.from(container.children);
+    
+    cards.sort((a, b) => {
+        let va, vb;
+        if (sortBy === 'title') {
+            va = a.querySelector('h3').textContent.toLowerCase();
+            vb = b.querySelector('h3').textContent.toLowerCase();
+        } else if (sortBy === 'year') {
+            va = parseInt(a.dataset.year);
+            vb = parseInt(b.dataset.year);
+        }
+        
+        return direction === 'asc' 
+            ? (va < vb ? -1 : va > vb ? 1 : 0)
+            : (va > vb ? -1 : va < vb ? 1 : 0);
+    });
+    
+    // Limpiar contenedor y agregar cards ordenadas
+    container.innerHTML = '';
+    cards.forEach(card => container.appendChild(card));
+    
+    // Actualizar botones activos
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.classList.toggle('active', 
+            btn.dataset.sort === sortBy && btn.dataset.dir === direction);
+    });
+    
+    // Guardar preferencias
+    localStorage.setItem('catalogSort', JSON.stringify({ sortBy, direction }));
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Generar catálogo primero
     generarCatalogo();
+    
+    // Configurar botones de ordenamiento
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            sortCards(btn.dataset.sort, btn.dataset.dir);
+        });
+    });
+    
+    // Aplicar ordenamiento guardado
+    try {
+        const savedSort = JSON.parse(localStorage.getItem('catalogSort')) || 
+            { sortBy: 'title', direction: 'asc' };
+        sortCards(savedSort.sortBy, savedSort.direction);
+    } catch(e) {
+        sortCards('title', 'asc');
+    }
     
     const buscador = document.getElementById('buscador');
     try {
@@ -260,7 +310,51 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener para el select de género
     selectGenero.addEventListener('change', filtrarCatalogo);
 
-    // Aplicar filtrado inicial (si no hay filtros, esto mostrará todo)
+    // Función para ordenar tarjetas
+    function sortCards(sortBy, direction) {
+        const cont = document.getElementById('contenedor-catalogo');
+        const cards = Array.from(cont.children);
+        
+        cards.sort((a, b) => {
+            let va = sortBy === 'title' 
+                ? a.querySelector('h3').textContent 
+                : a.dataset.year || '0';
+            let vb = sortBy === 'title' 
+                ? b.querySelector('h3').textContent 
+                : b.dataset.year || '0';
+                
+            if (sortBy === 'year') {
+                va = parseInt(va);
+                vb = parseInt(vb);
+            }
+            
+            return direction === 'asc' 
+                ? (va < vb ? -1 : va > vb ? 1 : 0)
+                : (va > vb ? -1 : va < vb ? 1 : 0);
+        });
+        
+        cards.forEach(card => cont.appendChild(card));
+        
+        // Actualizar botones activos
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.classList.toggle('active', 
+                btn.dataset.sort === sortBy && btn.dataset.dir === direction);
+        });
+        
+        // Guardar preferencias
+        localStorage.setItem('catalogSort', JSON.stringify({ sortBy, direction }));
+    }
+
+    // Configurar botones de ordenamiento
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            sortCards(btn.dataset.sort, btn.dataset.dir);
+        });
+    });
+    
+    // Aplicar ordenamiento guardado y filtrado inicial
+    const savedSort = JSON.parse(localStorage.getItem('catalogSort') || 
+        '{"sortBy":"title","direction":"asc"}');
+    sortCards(savedSort.sortBy, savedSort.direction);
     filtrarCatalogo();
 });
-
