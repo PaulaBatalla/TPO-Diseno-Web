@@ -94,12 +94,13 @@ header {
 .filtros {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
     margin-bottom: 30px;
 }
 
-.btn {
+/* Botones de filtro (Series/Películas) */
+.btn.tipo {
     background-color: #415a77;
     color: #fff;
     border: none;
@@ -108,18 +109,52 @@ header {
     cursor: pointer;
     text-decoration: none;
     transition: 0.3s;
+    font-size: 1rem;
 }
 
-.btn:hover {
-    background-color: #598392;
+.btn.tipo:hover,
+.btn.tipo.active {
+    background-color: #1b263b;
 }
 
+/* Select de géneros */
 .filtros select {
     padding: 8px 15px;
     border-radius: 20px;
     border: none;
     background-color: #222;
     color: #fff;
+}
+
+/* Botones de ordenamiento */
+.sort-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin: 20px 5% 30px auto;
+}
+
+.sort-controls .btn {
+    background-color: #415a77;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    height: 28px;
+    opacity: 0.75;
+    transition: all 0.2s;
+}
+
+.sort-controls .btn:hover {
+    opacity: 1;
+    background-color: #536b8b;
+}
+
+.sort-controls .btn.active {
+    background-color: #1b263b;
+    opacity: 1;
 }
 
 .grid-catalogo {

@@ -122,6 +122,34 @@ document.addEventListener('DOMContentLoaded', function() {
     generarCarrusel();
     generarDestacado();
     
+    // Agregar un buscador en el header (si no existe) que redirija al catálogo con ?q=texto
+    (function() {
+        const header = document.querySelector('header');
+        if (!header) return;
+
+        // Usamos un id distinto (buscador-header) para no chocar con el buscador del catálogo
+        let headerBuscador = header.querySelector('#buscador-header');
+        if (!headerBuscador) {
+            const buscadorDiv = document.createElement('div');
+            buscadorDiv.className = 'buscador';
+            buscadorDiv.innerHTML = '<input type="search" id="buscador-header" placeholder="Buscar en catálogo...">';
+            header.appendChild(buscadorDiv);
+            headerBuscador = buscadorDiv.querySelector('#buscador-header');
+        }
+
+        // Redirigir a catalogo.html con query param al presionar Enter
+        headerBuscador.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const q = headerBuscador.value.trim();
+                if (q) {
+                    window.location.href = 'catalogo.html?q=' + encodeURIComponent(q);
+                } else {
+                    window.location.href = 'catalogo.html';
+                }
+            }
+        });
+    })();
+    
     const btnSeries = document.getElementById('btn-series');
     const btnPeliculas = document.getElementById('btn-peliculas');
     
