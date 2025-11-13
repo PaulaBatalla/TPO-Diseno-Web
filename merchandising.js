@@ -37,8 +37,19 @@ const productosDescripciones = [
 
 const productosPrecios = [15.99, 12.50, 9.99, 18.75, 14.25, 24.99];
 
-// Carrito de compras
-let carrito = [];
+// Carrito de compras - ahora usando localStorage
+let carrito = cargarCarritoDesdeLocalStorage();
+
+// Función para cargar el carrito desde localStorage
+function cargarCarritoDesdeLocalStorage() {
+    const carritoGuardado = localStorage.getItem('carrito');
+    return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+}
+
+// Función para guardar el carrito en localStorage
+function guardarCarritoEnLocalStorage() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
 
 // Paginación
 let paginaActual = 1;
@@ -88,6 +99,7 @@ function agregarAlCarrito(id, nombre, precio, imagen) {
         });
     }
     
+    guardarCarritoEnLocalStorage(); // Guardar en localStorage
     actualizarCarrito();
     mostrarNotificacion('Producto agregado al carrito');
 }
@@ -95,6 +107,7 @@ function agregarAlCarrito(id, nombre, precio, imagen) {
 // Eliminar producto del carrito
 function eliminarDelCarrito(id) {
     carrito = carrito.filter(item => item.id !== id);
+    guardarCarritoEnLocalStorage(); // Guardar en localStorage
     actualizarCarrito();
     mostrarNotificacion('Producto eliminado del carrito');
 }
@@ -105,6 +118,7 @@ function vaciarCarrito() {
     
     if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
         carrito = [];
+        guardarCarritoEnLocalStorage(); // Guardar en localStorage
         actualizarCarrito();
         mostrarNotificacion('Carrito vaciado');
     }
@@ -165,6 +179,7 @@ function finalizarCompra() {
     
     // Vaciar carrito
     carrito = [];
+    guardarCarritoEnLocalStorage(); // Guardar en localStorage
     actualizarCarrito();
     cerrarCarrito();
 }
