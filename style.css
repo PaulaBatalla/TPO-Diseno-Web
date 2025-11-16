@@ -1,3 +1,23 @@
+/* Variables globales */
+:root {
+    --bg: #212529;
+    --bg-dark: #0f0f0f;
+    --bg-mid: #1a1a1a;
+    --bg-header: #1b263b;
+
+    --blue: #415a77;
+    --blue-light: #598392;
+
+    --text-light: #f5f5f5;
+    --text-muted: #ccc;
+
+    --radius: 10px;
+    --radius-lg: 15px;
+
+    --transition: 0.3s ease;
+}
+
+/* Reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,8 +26,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #212529;
-    color: #f5f5f5;
+    background-color: var(--bg);
+    color: var(--text-light);
     scroll-behavior: smooth;
 }
 
@@ -19,18 +39,19 @@ section {
     padding: 60px 10%;
 }
 
+/* Header */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #1b263b;
+    background-color: var(--bg-header);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 10%;
     z-index: 1000;
-    border-bottom: 2px solid #415a77;
+    border-bottom: 2px solid var(--blue);
 }
 
 .logo {
@@ -46,13 +67,12 @@ header {
 
 .logo h1 {
     font-size: 1.5rem;
-    color: white;
 }
 
 .logo h1 a {
-    color: white;
+    color: var(--text-light);
     text-decoration: none;
-    transition: opacity 0.3s;
+    transition: opacity var(--transition);
 }
 
 .logo h1 a:hover {
@@ -60,17 +80,18 @@ header {
 }
 
 .nav a {
-    color: #f5f5f5;
+    color: var(--text-light);
     margin: 0 15px;
     text-decoration: none;
     font-weight: 400;
-    transition: color 0.3s;
+    transition: color var(--transition);
 }
 
 .nav a:hover {
-    color: #415a77;
+    color: var(--blue);
 }
 
+/* Hero + carrusel */
 .hero {
     height: 90vh;
     margin-top: 73px;
@@ -78,23 +99,19 @@ header {
     overflow: hidden;
 }
 
-.carousel, .carousel-inner {
+.carousel,
+.carousel-inner {
     height: 100%;
-    position: relative;
 }
 
 .carousel-item {
     height: 100%;
-    background-color: #000;
 }
 
 .carousel-item::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
@@ -103,95 +120,74 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    max-width: 100%;
-    display: block;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
 }
 
 .carousel-caption {
     top: 50%;
     transform: translateY(-50%);
-    bottom: auto;
-    padding: 0 20px;
     z-index: 2;
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
+    padding: 0 20px;
 }
 
 .carousel-caption h2 {
     font-size: 3rem;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-weight: 600;
 }
 
 .carousel-caption p {
     margin-bottom: 30px;
     font-size: 1.2rem;
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* Botón hero */
 .btn-hero {
-    background-color: #415a77;
+    background-color: var(--blue);
     color: #fff;
     border: none;
     padding: 10px 25px;
     border-radius: 25px;
-    cursor: pointer;
     text-decoration: none;
-    transition: 0.3s;
+    transition: var(--transition);
+    display: inline-block;
 }
 
 .btn-hero:hover {
-    background-color: #598392;
+    background-color: var(--blue-light);
 }
 
+/* Destacado */
 .destacado {
-    background-color: #212529;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    background-color: var(--bg);
 }
 
 .destacado h2 {
     text-align: center;
     margin-bottom: 40px;
     font-size: 2.2rem;
-    color: #f5f5f5;
-    padding: 12px 20px;
 }
 
+/* Toggle Series / Películas */
 .toggle-container {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    gap: 0;
-    background-color: #1a1a1a;
     border-radius: 30px;
+    background-color: var(--bg-mid);
     padding: 5px;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .toggle-option {
-    background-color: transparent;
-    color: #ccc;
+    background: transparent;
     border: none;
     padding: 12px 40px;
+    color: #ccc;
     border-radius: 25px;
-    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
+    transition: var(--transition);
 }
 
 .toggle-option:hover {
@@ -199,80 +195,66 @@ header {
 }
 
 .toggle-option.active {
-    background: linear-gradient(135deg, #415a77 0%, #598392 100%);
+    background: linear-gradient(135deg, var(--blue), var(--blue-light));
     color: #fff;
     box-shadow: 0 4px 15px rgba(65, 90, 119, 0.4);
 }
 
-/* Estilos específicos para cards de destacado - más compactas */
-/* Estilos específicos para cards de destacado - más compactas */
+/* Cards del destacado (iguales al catálogo pero reducidas) */
 #contenedor-destacado .card {
-    /* Aplicar mismo estilo que en el catálogo principal */
-    background-color: #1a1a1a;
-    border-radius: 10px;
+    background-color: var(--bg-mid);
+    border-radius: var(--radius);
+    width: 220px;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    max-width: 220px; /* mantener tamaño compacto */
-    width: 220px; /* forzar ancho fijo para uniformidad */
-    flex: 0 0 220px; /* si el contenedor es flex, evitar que crezca/encoga */
-    margin: 0 auto;
+    transition: var(--transition);
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 
 #contenedor-destacado .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 15px #415a77;
+    box-shadow: 0 0 15px var(--blue);
 }
 
 #contenedor-destacado .card img {
     width: 100%;
     height: 280px;
     object-fit: cover;
-    display: block;
 }
 
 #contenedor-destacado .card-info {
     padding: 15px 10px;
-    color: #f5f5f5;
     text-align: center;
 }
 
 #contenedor-destacado .card-info h3 {
-    color: #415a77;
+    color: var(--blue);
     margin-bottom: 8px;
     font-size: 1rem;
-    line-height: 1.2;
 }
 
-#contenedor-destacado .card-info p {
-    margin-bottom: 6px;
-    font-size: 0.9rem;
+/* Layout horizontal responsivo */
+#contenedor-destacado {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
-/* Forzar layout vertical y centrado para la sección Destacado (mantener aislado del grid global)
-   Usamos flex-column para que las cards queden una debajo de otra y centradas como antes. */
-#contenedor-destacado.grid-catalogo {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 1.5rem !important;
-    padding: 0 5% !important;
-}
-
+/* Nosotros + contacto */
 .nosotros {
-    background-color: #0f0f0f;
+    background-color: var(--bg-dark);
     text-align: center;
 }
 
 .nosotros p {
     max-width: 800px;
     margin: 20px auto;
-    color: #ccc;
-    padding: 20px;
     background-color: rgba(65, 90, 119, 0.08);
-    border-radius: 10px;
-    border-left: 3px solid #415a77;
+    padding: 20px;
+    border-left: 3px solid var(--blue);
+    border-radius: var(--radius);
 }
 
 .contacto {
@@ -288,31 +270,35 @@ form {
     gap: 15px;
 }
 
-input, textarea {
+input,
+textarea {
     background-color: #222;
     border: 1px solid #444;
-    border-radius: 10px;
+    border-radius: var(--radius);
     padding: 10px;
-    color: #fff;
+    color: var(--text-light);
 }
 
+/* Footer */
 footer {
-    background-color: #0f0f0f;
+    background-color: var(--bg-dark);
     padding: 20px;
     text-align: center;
-    border-top: 2px solid #415a77;
+    border-top: 2px solid var(--blue);
 }
 
 footer .redes a {
     color: #0b2545;
     margin: 0 10px;
     font-size: 1.3rem;
+    transition: var(--transition);
 }
 
 footer .redes a:hover {
     color: #fff;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -320,12 +306,11 @@ footer .redes a:hover {
     }
 
     .nav {
-        display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    .hero h2 {
+    .carousel-caption h2 {
         font-size: 2rem;
     }
 }

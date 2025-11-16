@@ -5,16 +5,28 @@ const productosImagenes = [
     'producto3.jpg',
     'producto4.jpg',
     'producto5.jpg',
-    'producto6.jpg'
+    'producto6.jpg',
+    'producto7.jpg',
+    'producto8.jpg',
+    'producto9.jpg',
+    'producto10.jpg',
+    'producto11.jpg',
+    'producto12.jpg'
 ];
 
 const productosNombres = [
     'Remera Breaking Bad',
-    'Taza The Bear',
+    'Taza Friends',
     'Poster Dune 2',
     'Gorra Bridgerton',
     'Libreta Percy Jackson',
-    'Funko Pop Spider-Man'
+    'Funko Pop Spider-Man',
+    'Buzo Stranger Things',
+    'Llavero Grogu (The Mandalorian)',
+    'Poster Oppenheimer',
+    'Set de Stickers Disney',
+    'Taza Barbie',
+    'Funko Pop Wednesday Addams'
 ];
 
 const productosCategorias = [
@@ -23,337 +35,314 @@ const productosCategorias = [
     'Decoración',
     'Accesorios',
     'Papelería',
+    'Coleccionables',
+    'Ropa',
+    'Accesorios',
+    'Decoración',
+    'Papelería',
+    'Accesorios',
     'Coleccionables'
 ];
 
 const productosDescripciones = [
     'Remera 100% algodón con el icónico logo de Breaking Bad. Disponible en varios talles.',
-    'Taza de cerámica con diseño exclusivo de The Bear. Ideal para tu café o té favorito.',
+    'Taza de cerámica con diseño exclusivo de Friends. Ideal para tu café o té favorito.',
     'Poster de alta calidad de Dune: Part Two. Perfecto para decorar tu espacio.',
     'Gorra ajustable con bordado de Bridgerton. Estilo clásico y elegante.',
     'Libreta de 200 páginas con tapa dura. Diseño inspirado en Percy Jackson and the Olympians.',
-    'Figura Funko Pop de Spider-Man Far From Home. Edición limitada para coleccionistas.'
+    'Figura Funko Pop de Spider-Man Far From Home. Edición limitada para coleccionistas.',
+    'Buzo premium de Stranger Things con diseño Upside Down. Disponible en varios talles.',
+    'Llavero metálico de Grogu (Baby Yoda). Ideal para mochilas, llaves o colección.',
+    'Poster artístico de Oppenheimer impreso en papel fotográfico de alta calidad.',
+    'Set de stickers de Disney con personajes clásicos. Ideal para decorar cuadernos y laptops.',
+    'Taza de cerámica rosa inspirada en Barbie. Apta para microondas.',
+    'Figura Funko Pop de Wednesday Addams con su icónico uniforme de Nevermore.'
 ];
 
-const productosPrecios = [15.99, 12.50, 9.99, 18.75, 14.25, 24.99];
+const productosPrecios = [15.99, 12.50, 9.99, 18.75, 14.25, 24.99, 20.99, 8.55,9.99, 7.49, 11.00, 22.50];
 
-// Carrito de compras - ahora usando localStorage
-let carrito = cargarCarritoDesdeLocalStorage();
+// Datos del carrito
 
-// Función para cargar el carrito desde localStorage
-function cargarCarritoDesdeLocalStorage() {
-    const carritoGuardado = localStorage.getItem('carrito');
-    return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+let carrito = cargarCarrito();
+
+function cargarCarrito() {
+    return JSON.parse(localStorage.getItem("carrito")) || [];
 }
 
-// Función para guardar el carrito en localStorage
-function guardarCarritoEnLocalStorage() {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+function guardarCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-// Paginación
-let paginaActual = 1;
-const productosPorPagina = 3;
-let totalProductos = 0;
 
 // Elementos del DOM
-const btnAbrirCarrito = document.getElementById('btn-abrir-carrito');
-const btnCerrarCarrito = document.getElementById('btn-cerrar-carrito');
-const carritoSidebar = document.getElementById('carrito-sidebar');
-const overlay = document.getElementById('overlay');
-const contadorCarrito = document.getElementById('contador-carrito');
-const carritoItems = document.getElementById('carrito-items');
-const carritoVacio = document.getElementById('carrito-vacio');
-const carritoFooter = document.getElementById('carrito-footer');
-const totalPrecio = document.getElementById('total-precio');
+
+const DOM = {
+    abrirCarrito: document.getElementById("btn-abrir-carrito"),
+    cerrarCarrito: document.getElementById("btn-cerrar-carrito"),
+    sidebar: document.getElementById("carrito-sidebar"),
+    overlay: document.getElementById("overlay"),
+
+    contador: document.getElementById("contador-carrito"),
+    items: document.getElementById("carrito-items"),
+    vacio: document.getElementById("carrito-vacio"),
+    footer: document.getElementById("carrito-footer"),
+    totalPrecio: document.getElementById("total-precio"),
+
+    productosContainer: document.getElementById("productos-container"),
+    numerosPagina: document.getElementById("numeros-pagina"),
+    btnAnterior: document.getElementById("btn-anterior"),
+    btnSiguiente: document.getElementById("btn-siguiente")
+};
+
+
+// Eventos principales
 
 // Abrir carrito
-btnAbrirCarrito.addEventListener('click', () => {
-    carritoSidebar.classList.add('abierto');
-    overlay.classList.add('activo');
+DOM.abrirCarrito.addEventListener("click", () => {
+    DOM.sidebar.classList.add("abierto");
+    DOM.overlay.classList.add("activo");
 });
 
 // Cerrar carrito
-btnCerrarCarrito.addEventListener('click', cerrarCarrito);
-overlay.addEventListener('click', cerrarCarrito);
+DOM.cerrarCarrito.addEventListener("click", cerrarCarrito);
+DOM.overlay.addEventListener("click", cerrarCarrito);
 
 function cerrarCarrito() {
-    carritoSidebar.classList.remove('abierto');
-    overlay.classList.remove('activo');
+    DOM.sidebar.classList.remove("abierto");
+    DOM.overlay.classList.remove("activo");
 }
 
-// Agregar producto al carrito
-function agregarAlCarrito(id, nombre, precio, imagen) {
-    // Verificar si el producto ya existe en el carrito
-    const productoExistente = carrito.find(item => item.id === id);
-    
-    if (productoExistente) {
-        productoExistente.cantidad++;
+
+// Logica carrito
+
+function agregarAlCarrito(id) {
+    const existente = carrito.find(item => item.id === id);
+
+    if (existente) {
+        existente.cantidad++;
     } else {
         carrito.push({
-            id: id,
-            nombre: nombre,
-            precio: precio,
-            imagen: imagen,
+            id,
+            nombre: productosNombres[id - 1],
+            precio: productosPrecios[id - 1],
+            imagen: "images/" + productosImagenes[id - 1],
             cantidad: 1
         });
     }
-    
-    guardarCarritoEnLocalStorage(); // Guardar en localStorage
+
+    guardarCarrito();
     actualizarCarrito();
-    mostrarNotificacion('Producto agregado al carrito');
+    mostrarNotificacion("Producto agregado al carrito");
 }
 
-// Eliminar producto del carrito
 function eliminarDelCarrito(id) {
     carrito = carrito.filter(item => item.id !== id);
-    guardarCarritoEnLocalStorage(); // Guardar en localStorage
+    guardarCarrito();
     actualizarCarrito();
-    mostrarNotificacion('Producto eliminado del carrito');
+    mostrarNotificacion("Producto eliminado");
 }
 
-// Vaciar carrito completamente
 function vaciarCarrito() {
     if (carrito.length === 0) return;
-    
-    if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+
+    if (confirm("¿Vaciar carrito?")) {
         carrito = [];
-        guardarCarritoEnLocalStorage(); // Guardar en localStorage
+        guardarCarrito();
         actualizarCarrito();
-        mostrarNotificacion('Carrito vaciado');
+        mostrarNotificacion("Carrito vaciado");
     }
 }
 
-// Actualizar la visualización del carrito
-function actualizarCarrito() {
-    // Actualizar contador
-    const cantidadTotal = carrito.reduce((total, item) => total + item.cantidad, 0);
-    contadorCarrito.textContent = cantidadTotal;
-    
-    // Limpiar items del carrito
-    carritoItems.innerHTML = '';
-    
-    if (carrito.length === 0) {
-        carritoVacio.style.display = 'flex';
-        carritoFooter.style.display = 'none';
-    } else {
-        carritoVacio.style.display = 'none';
-        carritoFooter.style.display = 'block';
-        
-        // Mostrar items del carrito
-        carrito.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'carrito-item';
-            itemElement.innerHTML = `
-                <div class="carrito-item-imagen">
-                    <img src="${item.imagen}" alt="${item.nombre}">
-                </div>
-                <div class="carrito-item-info">
-                    <h4>${item.nombre}</h4>
-                    <p>$${item.precio.toFixed(2)} x ${item.cantidad}</p>
-                </div>
-                <button class="btn-eliminar" onclick="eliminarDelCarrito(${item.id})">
-                    🗑️
-                </button>
-            `;
-            carritoItems.appendChild(itemElement);
-        });
-        
-        // Calcular y mostrar total
-        const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-        totalPrecio.textContent = `$${total.toFixed(2)}`;
-    }
-}
-
-// Finalizar compra
 function finalizarCompra() {
-    if (carrito.length === 0) {
-        alert('Tu carrito está vacío');
+    if (!carrito.length) {
+        alert("Tu carrito está vacío");
         return;
     }
-    
-    const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-    
-    // Mostrar mensaje de éxito
-    alert(`¡Compra realizada con éxito!\n\nTotal: $${total.toFixed(2)}\n\n¡Gracias por tu compra!`);
-    
-    // Vaciar carrito
+
+    const total = carrito.reduce((s, item) => s + item.precio * item.cantidad, 0);
+
+    alert(`¡Compra realizada!\nTotal: $${total.toFixed(2)}\n¡Gracias por tu compra!`);
+
     carrito = [];
-    guardarCarritoEnLocalStorage(); // Guardar en localStorage
+    guardarCarrito();
     actualizarCarrito();
     cerrarCarrito();
 }
 
-// Mostrar notificación temporal
-function mostrarNotificacion(mensaje) {
-    // Crear elemento de notificación
-    const notificacion = document.createElement('div');
-    notificacion.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background-color: #415a77;
-        color: white;
-        padding: 15px 25px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        z-index: 3000;
-        animation: slideIn 0.3s ease;
-    `;
-    notificacion.textContent = mensaje;
-    
-    // Agregar al body
-    document.body.appendChild(notificacion);
-    
-    // Eliminar después de 2 segundos
-    setTimeout(() => {
-        notificacion.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            document.body.removeChild(notificacion);
-        }, 300);
-    }, 2000);
-}
 
-// Agregar animaciones CSS
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
+// Vista carrito
 
-// Funciones de paginación
-function inicializarPaginacion() {
-    const productos = document.querySelectorAll('.producto-item');
-    totalProductos = productos.length;
-    
-    // Ocultar todos los productos inicialmente
-    productos.forEach((producto, index) => {
-        producto.style.display = 'none';
+function actualizarCarrito() {
+    // Actualizar contador
+    const totalCant = carrito.reduce((t, item) => t + item.cantidad, 0);
+    DOM.contador.textContent = totalCant;
+
+    DOM.items.innerHTML = "";
+
+    if (!carrito.length) {
+        DOM.vacio.style.display = "flex";
+        DOM.footer.style.display = "none";
+        return;
+    }
+
+    DOM.vacio.style.display = "none";
+    DOM.footer.style.display = "block";
+
+    carrito.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "carrito-item";
+
+        div.innerHTML = `
+            <div class="carrito-item-imagen">
+                <img src="${item.imagen}" alt="${item.nombre}">
+            </div>
+
+            <div class="carrito-item-info">
+                <h4>${item.nombre}</h4>
+                <p>$${item.precio.toFixed(2)} x ${item.cantidad}</p>
+            </div>
+
+            <button class="btn-eliminar" data-id="${item.id}">
+                🗑️
+            </button>
+        `;
+
+        DOM.items.appendChild(div);
     });
-    
-    // Mostrar productos de la página actual
-    mostrarProductosPagina(paginaActual);
-    
-    // Generar números de página
-    generarNumerosPagina();
-}
 
-function mostrarProductosPagina(pagina) {
-    const productos = document.querySelectorAll('.producto-item');
-    const inicio = (pagina - 1) * productosPorPagina;
-    const fin = inicio + productosPorPagina;
-    
-    productos.forEach((producto, index) => {
-        if (index >= inicio && index < fin) {
-            producto.style.display = 'flex';
-        } else {
-            producto.style.display = 'none';
-        }
+    // Botones eliminar individuales
+    DOM.items.querySelectorAll(".btn-eliminar").forEach(btn => {
+        btn.addEventListener("click", () => {
+            eliminarDelCarrito(parseInt(btn.dataset.id));
+        });
     });
-    
-    // Actualizar botones
-    actualizarBotonesPaginacion();
-    
-    // Scroll suave hacia arriba
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Total
+    const total = carrito.reduce((s, item) => s + item.precio * item.cantidad, 0);
+    DOM.totalPrecio.textContent = "$" + total.toFixed(2);
 }
 
-function generarNumerosPagina() {
-    const totalPaginas = Math.ceil(totalProductos / productosPorPagina);
-    const numerosContainer = document.getElementById('numeros-pagina');
-    numerosContainer.innerHTML = '';
-    
-    for (let i = 1; i <= totalPaginas; i++) {
-        const boton = document.createElement('button');
-        boton.className = 'numero-pagina';
-        boton.textContent = i;
-        if (i === paginaActual) {
-            boton.classList.add('activo');
-        }
-        boton.onclick = () => irAPagina(i);
-        numerosContainer.appendChild(boton);
-    }
+
+// Notificaciones
+
+function mostrarNotificacion(msg) {
+    const noti = document.createElement("div");
+    noti.className = "notificacion";
+    noti.textContent = msg;
+
+    document.body.appendChild(noti);
+
+    setTimeout(() => noti.classList.add("oculta"), 2000);
+    setTimeout(() => noti.remove(), 2600);
 }
 
-function irAPagina(pagina) {
-    paginaActual = pagina;
-    mostrarProductosPagina(paginaActual);
-    generarNumerosPagina();
-}
 
-function cambiarPagina(direccion) {
-    const totalPaginas = Math.ceil(totalProductos / productosPorPagina);
-    const nuevaPagina = paginaActual + direccion;
-    
-    if (nuevaPagina >= 1 && nuevaPagina <= totalPaginas) {
-        irAPagina(nuevaPagina);
-    }
-}
+// Generar productos
 
-function actualizarBotonesPaginacion() {
-    const totalPaginas = Math.ceil(totalProductos / productosPorPagina);
-    const btnAnterior = document.getElementById('btn-anterior');
-    const btnSiguiente = document.getElementById('btn-siguiente');
-    
-    // Deshabilitar botón anterior si estamos en la primera página
-    btnAnterior.disabled = (paginaActual === 1);
-    
-    // Deshabilitar botón siguiente si estamos en la última página
-    btnSiguiente.disabled = (paginaActual === totalPaginas);
-}
-
-// Generar productos dinámicamente
 function generarProductos() {
-    const contenedor = document.getElementById('productos-container');
-    contenedor.innerHTML = ''; // Limpiar contenedor
-    
-    for (let i = 0; i < productosImagenes.length; i++) {
-        const productoHTML = `
-            <div class="producto-item" data-id="${i + 1}">
-                <div class="producto-imagen">
-                    <img src="images/${productosImagenes[i]}" alt="${productosNombres[i]}">
-                </div>
-                <div class="producto-info">
-                    <h3>${productosNombres[i]}</h3>
-                    <p class="categoria">${productosCategorias[i]}</p>
-                    <p class="descripcion">${productosDescripciones[i]}</p>
-                </div>
-                <div class="producto-accion">
-                    <p class="precio">$${productosPrecios[i].toFixed(2)}</p>
-                    <button class="btn-agregar" onclick="agregarAlCarrito(${i + 1}, '${productosNombres[i]}', ${productosPrecios[i]}, 'images/${productosImagenes[i]}')">
-                        Agregar al carrito
-                    </button>
-                </div>
+    DOM.productosContainer.innerHTML = "";
+
+    productosNombres.forEach((nombre, i) => {
+        const id = i + 1;
+
+        const card = document.createElement("div");
+        card.className = "producto-item";
+        card.dataset.id = id;
+
+        card.innerHTML = `
+            <div class="producto-imagen">
+                <img src="images/${productosImagenes[i]}" alt="${nombre}">
+            </div>
+
+            <div class="producto-info">
+                <h3>${nombre}</h3>
+                <p class="categoria">${productosCategorias[i]}</p>
+                <p class="descripcion">${productosDescripciones[i]}</p>
+            </div>
+
+            <div class="producto-accion">
+                <p class="precio">$${productosPrecios[i].toFixed(2)}</p>
+                <button class="btn-agregar" data-id="${id}">
+                    Agregar al carrito
+                </button>
             </div>
         `;
-        contenedor.innerHTML += productoHTML;
+
+        DOM.productosContainer.appendChild(card);
+    });
+
+    // Listeners de botones agregar
+    document.querySelectorAll(".btn-agregar").forEach(btn => {
+        btn.addEventListener("click", () => {
+            agregarAlCarrito(parseInt(btn.dataset.id));
+        });
+    });
+}
+
+
+// Paginacion
+
+let paginaActual = 1;
+const porPagina = 3;
+
+function inicializarPaginacion() {
+    paginaActual = 1;
+    actualizarPaginacion();
+}
+
+function actualizarPaginacion() {
+    const productos = document.querySelectorAll(".producto-item");
+    const total = productos.length;
+    const totalPaginas = Math.ceil(total / porPagina);
+
+    productos.forEach((prod, i) => {
+        prod.style.display =
+            i >= (paginaActual - 1) * porPagina && i < paginaActual * porPagina
+                ? "flex"
+                : "none";
+    });
+
+    generarNumerosPagina(totalPaginas);
+
+    DOM.btnAnterior.disabled = paginaActual === 1;
+    DOM.btnSiguiente.disabled = paginaActual === totalPaginas;
+}
+
+function generarNumerosPagina(total) {
+    DOM.numerosPagina.innerHTML = "";
+
+    for (let p = 1; p <= total; p++) {
+        const btn = document.createElement("button");
+        btn.className = "numero-pagina";
+        if (p === paginaActual) btn.classList.add("activo");
+        btn.textContent = p;
+
+        btn.addEventListener("click", () => {
+            paginaActual = p;
+            actualizarPaginacion();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        DOM.numerosPagina.appendChild(btn);
     }
 }
 
-// Inicializar carrito y paginación al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    generarProductos(); // Generar productos primero
-    actualizarCarrito();
+DOM.btnAnterior.addEventListener("click", () => {
+    paginaActual--;
+    actualizarPaginacion();
+});
+
+DOM.btnSiguiente.addEventListener("click", () => {
+    paginaActual++;
+    actualizarPaginacion();
+});
+
+
+// Init
+
+document.addEventListener("DOMContentLoaded", () => {
+    generarProductos();
     inicializarPaginacion();
+    actualizarCarrito();
 });
 

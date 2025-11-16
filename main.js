@@ -56,23 +56,27 @@ const destacadoPeliculasTitulos = [
     'Spider-Man: Far From Home'
 ];
 
-// Generar carrusel dinámicamente
+// Generar carrusel
 function generarCarrusel() {
     const indicadores = document.getElementById('carousel-indicators');
     const inner = document.getElementById('carousel-inner');
-    
+
     indicadores.innerHTML = '';
     inner.innerHTML = '';
-    
+
     for (let i = 0; i < carruselImagenes.length; i++) {
-        // Generar indicador
-        const indicador = `<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="${i}" ${i === 0 ? 'class="active"' : ''}></button>`;
-        indicadores.innerHTML += indicador;
-        
-        // Generar slide
-        const slide = `
+
+        // Indicadores
+        indicadores.innerHTML += `
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="${i}"
+                ${i === 0 ? 'class="active"' : ''}></button>
+        `;
+
+        // Slide
+        inner.innerHTML += `
             <div class="carousel-item ${i === 0 ? 'active' : ''}">
                 <img src="images/${carruselImagenes[i]}" class="d-block w-100" alt="${carruselTitulos[i]}">
+                
                 <div class="carousel-caption">
                     <h2>${carruselTitulos[i]}</h2>
                     <p>${carruselDescripciones[i]}</p>
@@ -80,113 +84,98 @@ function generarCarrusel() {
                 </div>
             </div>
         `;
-        inner.innerHTML += slide;
     }
 }
 
-// Generar lo más destacado dinámicamente
+
+// Generar destacado
 function generarDestacado() {
-    const contenedor = document.getElementById('contenedor-destacado');
-    contenedor.innerHTML = '';
-    
-    // Generar series
+    const cont = document.getElementById('contenedor-destacado');
+    cont.innerHTML = '';
+
+    // Series
     for (let i = 0; i < destacadoSeriesImagenes.length; i++) {
-        const card = `
+        cont.innerHTML += `
             <div class="card serie">
-                <img src="images/${destacadoSeriesImagenes[i]}" alt="Poster ${destacadoSeriesTitulos[i]}">
+                <img src="images/${destacadoSeriesImagenes[i]}" alt="${destacadoSeriesTitulos[i]}">
                 <div class="card-info">
                     <h3>${destacadoSeriesTitulos[i]}</h3>
                 </div>
             </div>
         `;
-        contenedor.innerHTML += card;
     }
-    
-    // Generar películas
+
+    // Peliculas
     for (let i = 0; i < destacadoPeliculasImagenes.length; i++) {
-        const card = `
+        cont.innerHTML += `
             <div class="card pelicula" style="display: none;">
-                <img src="images/${destacadoPeliculasImagenes[i]}" alt="Poster ${destacadoPeliculasTitulos[i]}">
+                <img src="images/${destacadoPeliculasImagenes[i]}" alt="${destacadoPeliculasTitulos[i]}">
                 <div class="card-info">
                     <h3>${destacadoPeliculasTitulos[i]}</h3>
                 </div>
             </div>
         `;
-        contenedor.innerHTML += card;
     }
 }
 
-// Alternar entre series y películas en la sección "Lo más destacado"
-document.addEventListener('DOMContentLoaded', function() {
-    // Generar todo dinámicamente primero
+
+// Toggle series/peliculas
+function mostrarSeries() {
+    document.querySelectorAll('.serie').forEach(c => c.style.display = 'block');
+    document.querySelectorAll('.pelicula').forEach(c => c.style.display = 'none');
+
+    document.getElementById('btn-series').classList.add('active');
+    document.getElementById('btn-peliculas').classList.remove('active');
+}
+
+function mostrarPeliculas() {
+    document.querySelectorAll('.pelicula').forEach(c => c.style.display = 'block');
+    document.querySelectorAll('.serie').forEach(c => c.style.display = 'none');
+
+    document.getElementById('btn-peliculas').classList.add('active');
+    document.getElementById('btn-series').classList.remove('active');
+}
+
+
+// Buscador en el header
+function configurarBuscadorHeader() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    // Evitar duplicar buscador
+    if (document.getElementById('buscador-header')) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'buscador';
+    wrapper.innerHTML = `
+        <input type="search" id="buscador-header" placeholder="Buscar en catálogo...">
+`;
+    header.appendChild(wrapper);
+
+    const input = wrapper.querySelector('#buscador-header');
+
+    // Enter = redirige a catálogo
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const q = input.value.trim();
+            window.location.href = q
+                ? 'catalogo.html?q=' + encodeURIComponent(q)
+                : 'catalogo.html';
+        }
+    });
+}
+
+
+// Inicializacion completa
+document.addEventListener('DOMContentLoaded', () => {
     generarCarrusel();
     generarDestacado();
-    
-    // Agregar un buscador en el header (si no existe) que redirija al catálogo con ?q=texto
-    (function() {
-        const header = document.querySelector('header');
-        if (!header) return;
+    configurarBuscadorHeader();
 
-        // Usamos un id distinto (buscador-header) para no chocar con el buscador del catálogo
-        let headerBuscador = header.querySelector('#buscador-header');
-        if (!headerBuscador) {
-            const buscadorDiv = document.createElement('div');
-            buscadorDiv.className = 'buscador';
-            buscadorDiv.innerHTML = '<input type="search" id="buscador-header" placeholder="Buscar en catálogo...">';
-            header.appendChild(buscadorDiv);
-            headerBuscador = buscadorDiv.querySelector('#buscador-header');
-        }
+    // Eventos toggle
+    document.getElementById('btn-series').addEventListener('click', mostrarSeries);
+    document.getElementById('btn-peliculas').addEventListener('click', mostrarPeliculas);
 
-        // Redirigir a catalogo.html con query param al presionar Enter
-        headerBuscador.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const q = headerBuscador.value.trim();
-                if (q) {
-                    window.location.href = 'catalogo.html?q=' + encodeURIComponent(q);
-                } else {
-                    window.location.href = 'catalogo.html';
-                }
-            }
-        });
-    })();
-    
-    const btnSeries = document.getElementById('btn-series');
-    const btnPeliculas = document.getElementById('btn-peliculas');
-    
-    // Función para mostrar series
-    function mostrarSeries() {
-        const cardsSeries = document.querySelectorAll('.serie');
-        const cardsPeliculas = document.querySelectorAll('.pelicula');
-        
-        cardsSeries.forEach(card => {
-            card.style.display = 'block';
-        });
-        cardsPeliculas.forEach(card => {
-            card.style.display = 'none';
-        });
-        btnSeries.classList.add('active');
-        btnPeliculas.classList.remove('active');
-    }
-    
-    // Función para mostrar películas
-    function mostrarPeliculas() {
-        const cardsSeries = document.querySelectorAll('.serie');
-        const cardsPeliculas = document.querySelectorAll('.pelicula');
-        
-        cardsPeliculas.forEach(card => {
-            card.style.display = 'block';
-        });
-        cardsSeries.forEach(card => {
-            card.style.display = 'none';
-        });
-        btnPeliculas.classList.add('active');
-        btnSeries.classList.remove('active');
-    }
-    
-    // Event listeners
-    btnSeries.addEventListener('click', mostrarSeries);
-    btnPeliculas.addEventListener('click', mostrarPeliculas);
-    
-    // Estado inicial: mostrar series (por defecto)
+    // Estado inicial: mostrar series
     mostrarSeries();
 });

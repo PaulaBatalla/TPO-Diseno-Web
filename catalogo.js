@@ -9,7 +9,21 @@ const catalogoImagenes = [
     'dune2.jpg',
     'oppenheimer.jpg',
     'moana2.jpg',
-    'spiderman.jpg'
+    'spiderman.jpg',
+    'strangerthings.jpg',
+    'thelastofus.jpg',
+    'houseofthedragon.jpg',
+    'theboys.jpg',
+    'wednesday.jpg',
+    'thecrown.jpg',
+    'themandalorian.jpg',
+    'insideout2.jpg',
+    'barbie.jpg',
+    'avatar2.jpg',
+    'johnwick4.jpg',
+    'thebatman.jpg',
+    'elemental.jpg',
+    'topgunmaverick.jpg'
 ];
 
 const catalogoTitulos = [
@@ -22,7 +36,21 @@ const catalogoTitulos = [
     'Dune: Part Two',
     'Oppenheimer',
     'Moana 2',
-    'Spider-Man: Far From Home'
+    'Spider-Man: Far From Home',
+    'Stranger Things',
+    'The Last of Us',
+    'House of the Dragon',
+    'The Boys',
+    'Wednesday',
+    'The Crown',
+    'The Mandalorian',
+    'Inside Out 2',
+    'Barbie',
+    'Avatar: The Way of Water',
+    'John Wick: Chapter 4',
+    'The Batman',
+    'Elemental',
+    'Top Gun: Maverick'
 ];
 
 const catalogoTipos = [
@@ -31,6 +59,20 @@ const catalogoTipos = [
     'series',
     'series',
     'series',
+    'peliculas',
+    'peliculas',
+    'peliculas',
+    'peliculas',
+    'peliculas',
+    'series',
+    'series',
+    'series',
+    'series',
+    'series',
+    'series',
+    'series',
+    'peliculas',
+    'peliculas',
     'peliculas',
     'peliculas',
     'peliculas',
@@ -48,7 +90,21 @@ const catalogoGeneros = [
     'accion cienciaficcion',
     'drama historico',
     'animacion aventura',
-    'accion superheroes aventura'
+    'accion superheroes aventura',
+    'cienciaficcion misterio',
+    'drama aventura',
+    'fantasia drama',
+    'superheroes accion',
+    'fantasia misterio',
+    'drama historico',
+    'cienciaficcion aventura',
+    'animacion familiar',
+    'comedia fantasia',
+    'cienciaficcion aventura',
+    'accion suspenso',
+    'accion crimen',
+    'animacion fantasia',
+    'accion drama'
 ];
 
 const catalogoGenerosTexto = [
@@ -61,7 +117,21 @@ const catalogoGenerosTexto = [
     'Ciencia Ficción / Aventura',
     'Drama / Histórico',
     'Animación / Aventura',
-    'Acción / Superhéroes / Aventura'
+    'Acción / Superhéroes / Aventura',
+    'Ciencia Ficción / Misterio',
+    'Drama / Aventura',
+    'Fantasía / Drama',
+    'Superhéroes / Acción',
+    'Fantasía / Misterio',
+    'Drama / Histórico',
+    'Ciencia Ficción / Aventura',
+    'Animación / Familiar',
+    'Comedia / Fantasía',
+    'Ciencia Ficción / Aventura',
+    'Acción / Suspenso',
+    'Acción / Crimen',
+    'Animación / Fantasía',
+    'Acción / Drama'
 ];
 
 const catalogoAnios = [
@@ -74,7 +144,21 @@ const catalogoAnios = [
     2024,
     2023,
     2024,
-    2019
+    2019,
+    2016,
+    2023,
+    2022,
+    2019,
+    2022,
+    2016,
+    2019,
+    2024,
+    2023,
+    2022,
+    2023,
+    2022,
+    2023,
+    2022
 ];
 
 const catalogoElencos = [
@@ -87,7 +171,21 @@ const catalogoElencos = [
     'Timothée Chalamet, Zendaya, Austin Butler',
     'Cillian Murphy, Emily Blunt, Robert Downey Jr.',
     'Auli\'i Cravalho, Dwayne Johnson',
-    'Tom Holland, Zendaya, Jake Gyllenhaal'
+    'Tom Holland, Zendaya, Jake Gyllenhaal',
+    'Millie Bobby Brown, Finn Wolfhard, David Harbour',
+    'Pedro Pascal, Bella Ramsey',
+    'Matt Smith, Emma D’Arcy, Olivia Cooke',
+    'Karl Urban, Jack Quaid, Antony Starr',
+    'Jenna Ortega, Emma Myers, Catherine Zeta-Jones',
+    'Claire Foy, Olivia Colman, Imelda Staunton',
+    'Pedro Pascal, Grogu (Baby Yoda)',
+    'Amy Poehler, Maya Hawke',
+    'Margot Robbie, Ryan Gosling',
+    'Sam Worthington, Zoe Saldana',
+    'Keanu Reeves, Donnie Yen',
+    'Robert Pattinson, Zoë Kravitz',
+    'Leah Lewis, Mamoudou Athie',
+    'Tom Cruise, Miles Teller'
 ];
 
 const catalogoSinopsis = [
@@ -100,7 +198,21 @@ const catalogoSinopsis = [
     'Paul Atreides une al pueblo Fremen mientras busca venganza contra los conspiradores que destruyeron su familia.',
     'La vida del físico J. Robert Oppenheimer y el desarrollo del Proyecto Manhattan durante la Segunda Guerra Mundial.',
     'Moana emprende un nuevo viaje a los mares del sur en busca de su identidad y el futuro de su pueblo.',
-    'Tras los eventos de Endgame, Peter Parker viaja por Europa mientras enfrenta nuevas amenazas y responsabilidades como Spider-Man.'
+    'Tras los eventos de Endgame, Peter Parker viaja por Europa mientras enfrenta nuevas amenazas y responsabilidades como Spider-Man.',
+    'Un grupo de niños enfrenta fuerzas sobrenaturales en su pequeño pueblo.',
+    'Un hombre y una adolescente deben sobrevivir en un mundo postapocalíptico.',
+    'La guerra civil entre las casas Targaryen por el Trono de Hierro.',
+    'Superhéroes corruptos son controlados por una organización clandestina.',
+    'Wednesday Addams investiga misterios en la Academia Nevermore.',
+    'La historia del reinado de Isabel II del Reino Unido.',
+    'Un cazarrecompensas mandaloriano se embarca en misiones galácticas.',
+    'Riley enfrenta nuevas emociones durante su adolescencia.',
+    'Una muñeca que vive en Barbieland comienza a cuestionarse su existencia.',
+    'Jake Sully protege a su familia en Pandora frente a una nueva amenaza.',
+    'John Wick enfrenta a poderosos enemigos en su última batalla.',
+    'Batman descubre una red de corrupción que involucra a Gotham.',
+    'Una niña de fuego y un chico de agua descubren lo que los une.',
+    'Maverick entrena a una nueva generación de pilotos de élite.'
 ];
 
 const catalogoPlataformas = [
@@ -113,248 +225,226 @@ const catalogoPlataformas = [
     'HBO Max',
     'Prime Video',
     'Disney+',
-    'Disney+'
+    'Disney+',
+    'Netflix',
+    'HBO Max',
+    'HBO Max',
+    'Prime Video',
+    'Netflix',
+    'Netflix',
+    'Disney+',
+    'Disney+',
+    'HBO Max',
+    'Disney+',
+    'Prime Video',
+    'HBO Max',
+    'Disney+',
+    'Paramount+'
 ];
 
-// Generar catálogo dinámicamente
+
+// Generacion del catalogo
+
+function crearCard(i) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.dataset.tipo = catalogoTipos[i];
+    card.dataset.genero = catalogoGeneros[i];
+    card.dataset.year = catalogoAnios[i];
+    card.dataset.elenco = catalogoElencos[i].toLowerCase();
+    card.dataset.titulo = catalogoTitulos[i].toLowerCase();
+
+    card.innerHTML = `
+        <img src="images/${catalogoImagenes[i]}" alt="Poster ${catalogoTitulos[i]}">
+        <div class="card-info">
+            <h3>${catalogoTitulos[i]}</h3>
+            <p><strong>Género:</strong> ${catalogoGenerosTexto[i]}</p>
+            <p><strong>Año:</strong> ${catalogoAnios[i]}</p>
+            <p><strong>Elenco:</strong> ${catalogoElencos[i]}</p>
+            <p class="sinopsis">${catalogoSinopsis[i]}</p>
+            <p><strong>Plataforma:</strong> ${catalogoPlataformas[i]}</p>
+        </div>
+    `;
+    return card;
+}
+
 function generarCatalogo() {
-    const contenedor = document.getElementById('contenedor-catalogo');
-    contenedor.innerHTML = ''; // Limpiar contenedor
-    
+    const cont = document.getElementById("contenedor-catalogo");
+    cont.innerHTML = "";
+
     for (let i = 0; i < catalogoImagenes.length; i++) {
-        const cardHTML = `
-                <div class="card" data-tipo="${catalogoTipos[i]}" data-genero="${catalogoGeneros[i]}" data-year="${catalogoAnios[i]}">
-                <img src="images/${catalogoImagenes[i]}" alt="Poster ${catalogoTitulos[i]}">
-                <div class="card-info">
-                    <h3>${catalogoTitulos[i]}</h3>
-                    <p><strong>Género:</strong> ${catalogoGenerosTexto[i]}</p>
-                    <p><strong>Año:</strong> ${catalogoAnios[i]}</p>
-                    <p><strong>Elenco:</strong> ${catalogoElencos[i]}</p>
-                    <p class="sinopsis">${catalogoSinopsis[i]}</p>
-                    <p><strong>Plataforma:</strong> ${catalogoPlataformas[i]}</p>
-                </div>
-            </div>
-        `;
-        contenedor.innerHTML += cardHTML;
+        cont.appendChild(crearCard(i));
     }
 }
 
-// Función para ordenar las tarjetas
-function sortCards(sortBy, direction) {
-    const container = document.getElementById('contenedor-catalogo');
-    const cards = Array.from(container.children);
-    
+// Ordenamiento
+
+function ordenarCatalogo(sortBy, direction) {
+    const cont = document.getElementById("contenedor-catalogo");
+    const cards = Array.from(cont.children);
+
     cards.sort((a, b) => {
-        let va, vb;
-        if (sortBy === 'title') {
-            va = a.querySelector('h3').textContent.toLowerCase();
-            vb = b.querySelector('h3').textContent.toLowerCase();
-        } else if (sortBy === 'year') {
-            va = parseInt(a.dataset.year);
-            vb = parseInt(b.dataset.year);
+        let va = a.dataset[sortBy];
+        let vb = b.dataset[sortBy];
+
+        if (sortBy === "year") {
+            va = parseInt(va);
+            vb = parseInt(vb);
         }
-        
-        return direction === 'asc' 
-            ? (va < vb ? -1 : va > vb ? 1 : 0)
-            : (va > vb ? -1 : va < vb ? 1 : 0);
+
+        if (direction === "asc") return va < vb ? -1 : va > vb ? 1 : 0;
+        return va > vb ? -1 : va < vb ? 1 : 0;
     });
-    
-    // Limpiar contenedor y agregar cards ordenadas
-    container.innerHTML = '';
-    cards.forEach(card => container.appendChild(card));
-    
-    // Actualizar botones activos
-    document.querySelectorAll('.sort-btn').forEach(btn => {
-        btn.classList.toggle('active', 
-            btn.dataset.sort === sortBy && btn.dataset.dir === direction);
+
+    cards.forEach(card => cont.appendChild(card));
+
+    // Guardar preferencia
+    localStorage.setItem("catalogSort", JSON.stringify({ sortBy, direction }));
+
+    // Activar botón correspondiente
+    document.querySelectorAll(".sort-btn").forEach(btn => {
+        btn.classList.toggle(
+            "active",
+            btn.dataset.sort === sortBy && btn.dataset.dir === direction
+        );
     });
-    
-    // Guardar preferencias
-    localStorage.setItem('catalogSort', JSON.stringify({ sortBy, direction }));
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Generar catálogo primero
-    generarCatalogo();
-    
-    // Configurar botones de ordenamiento
-    document.querySelectorAll('.sort-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            sortCards(btn.dataset.sort, btn.dataset.dir);
-        });
-    });
-    
-    // Aplicar ordenamiento guardado
-    try {
-        const savedSort = JSON.parse(localStorage.getItem('catalogSort')) || 
-            { sortBy: 'title', direction: 'asc' };
-        sortCards(savedSort.sortBy, savedSort.direction);
-    } catch(e) {
-        sortCards('title', 'asc');
+// Filtro
+
+function obtenerFiltros() {
+    return {
+        texto: document.getElementById("buscador").value.toLowerCase(),
+        tipo: document.querySelector(".tipo.active")?.dataset.tipo || "",
+        genero: document.getElementById("genero").value.toLowerCase()
+    };
+}
+
+function coincideCard(card, filtros) {
+    const titulo = card.dataset.titulo;
+    const elenco = card.dataset.elenco;
+    const tipo = card.dataset.tipo;
+    const generos = card.dataset.genero;
+
+    const textoOK = titulo.includes(filtros.texto) || elenco.includes(filtros.texto);
+    const tipoOK = !filtros.tipo || filtros.tipo === tipo;
+    const generoOK = !filtros.genero || generos.includes(filtros.genero);
+
+    return textoOK && tipoOK && generoOK;
+}
+
+function mostrarMensajeSinResultados(contenedor, query) {
+    let msg = document.getElementById("no-result-msg");
+
+    if (!msg) {
+        msg = document.createElement("div");
+        msg.id = "no-result-msg";
+        contenedor.appendChild(msg);
     }
-    
-    const buscador = document.getElementById('buscador');
+
+    msg.textContent = query
+        ? `No se encontraron resultados para "${query}"`
+        : "No se encontraron resultados.";
+}
+
+function removerMensajeSinResultados() {
+    const msg = document.getElementById("no-result-msg");
+    if (msg) msg.remove();
+}
+
+function resaltarPrimerResultado(cardsVisibles) {
+    // Remover highlights previos
+    document.querySelectorAll(".highlight-temporal").forEach(el => {
+        el.classList.remove("highlight-temporal");
+    });
+
+    const first = cardsVisibles[0];
+    if (!first) return;
+
+    first.classList.add("highlight-temporal");
+
     try {
-        const params = new URLSearchParams(window.location.search);
-        let q = params.get('q') || '';
-        if (q) {
-            q = q.replace(/\+/g, ' ');
-            try { q = decodeURIComponent(q); } catch (e) { /* ignore decode errors */ }
-            buscador.value = q;
-            // Aplicar filtro inmediatamente cuando venimos con ?q=...
-            filtrarCatalogo();
-            // También disparar evento 'input' por si hay otros listeners
-            buscador.dispatchEvent(new Event('input', { bubbles: true }));
+        first.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch(e) {}
+    
+    setTimeout(() => {
+        first.classList.remove("highlight-temporal");
+    }, 1500);
+}
+
+function filtrarCatalogo() {
+    const filtros = obtenerFiltros();
+    const cont = document.getElementById("contenedor-catalogo");
+    const cards = Array.from(cont.querySelectorAll(".card"));
+
+    let visibles = [];
+
+    cards.forEach(card => {
+        if (coincideCard(card, filtros)) {
+            card.style.display = "block";
+            visibles.push(card);
+        } else {
+            card.style.display = "none";
         }
-    } catch (e) {
-        // ignore URL parsing errors
+    });
+
+    if (visibles.length === 0) {
+        mostrarMensajeSinResultados(cont, filtros.texto);
+    } else {
+        removerMensajeSinResultados();
+        resaltarPrimerResultado(visibles);
     }
-    const botonesTipo = document.querySelectorAll('.tipo');
-    const selectGenero = document.getElementById('genero');
+}
 
-    // Función para filtrar las tarjetas
-    function filtrarCatalogo() {
-        const cards = document.querySelectorAll('.card'); // Obtener cards actuales
-        const textoBusqueda = buscador.value.toLowerCase();
-        const tipoSeleccionado = document.querySelector('.tipo.active')?.dataset.tipo || '';
-        const generoSeleccionado = selectGenero.value.toLowerCase();
+// Eventos
 
-        cards.forEach(card => {
-            const titulo = card.querySelector('h3').textContent.toLowerCase();
-            const elenco = card.querySelector('.card-info p:nth-child(4)').textContent.toLowerCase();
-            const tipo = card.dataset.tipo;
-            const generos = card.dataset.genero;
+function configurarEventos() {
+    // Buscador
+    document.getElementById("buscador").addEventListener("input", filtrarCatalogo);
 
-            // Filtro de búsqueda por texto
-            const coincideTexto = titulo.includes(textoBusqueda) || elenco.includes(textoBusqueda);
-            
-            // Filtro por tipo
-            const coincideTipo = !tipoSeleccionado || tipo === tipoSeleccionado;
-            
-            // Filtro por género
-            const coincideGenero = !generoSeleccionado || generos.includes(generoSeleccionado);
+    // Botones Series / Películas
+    document.querySelectorAll(".tipo").forEach(btn => {
+        btn.addEventListener("click", () => {
+            btn.classList.contains("active")
+                ? btn.classList.remove("active")
+                : (document.querySelectorAll(".tipo").forEach(b => b.classList.remove("active")),
+                   btn.classList.add("active"));
 
-            // Mostrar u ocultar tarjeta
-            if (coincideTexto && coincideTipo && coincideGenero) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-            // Después de filtrar, si hay resultados visibles, devolver el primero y resaltarlo.
-            // Si no hay resultados, mostrar mensaje amigable.
-            const contenedor = document.getElementById('contenedor-catalogo');
-            const allCards = Array.from(document.querySelectorAll('.card'));
-            const visibles = allCards.filter(c => c.style.display !== 'none');
-
-            if (visibles.length === 0) {
-                // Mostrar mensaje de 'no encontrado'
-                let msg = document.getElementById('no-result-msg');
-                if (!msg) {
-                    msg = document.createElement('div');
-                    msg.id = 'no-result-msg';
-                    msg.style.padding = '2rem';
-                    msg.style.textAlign = 'center';
-                    msg.style.color = '#666';
-                    msg.style.fontStyle = 'italic';
-                    contenedor.appendChild(msg);
-                }
-                const query = buscador.value.trim();
-                msg.textContent = query ? `No se encontraron resultados para "${query}"` : 'No se encontraron resultados.';
-            } else {
-                // Eliminar posible mensaje previo
-                const prevMsg = document.getElementById('no-result-msg');
-                if (prevMsg) prevMsg.remove();
-
-                const primerVisible = visibles[0];
-                // Remover cualquier highlight previo
-                document.querySelectorAll('.card.highlight-temporal').forEach(el => {
-                    el.classList.remove('highlight-temporal');
-                    el.style.transition = '';
-                    el.style.boxShadow = '';
-                });
-                // Añadir un highlight temporal y scrollear al centro
-                primerVisible.classList.add('highlight-temporal');
-                primerVisible.style.boxShadow = '0 0 0 4px rgba(255,215,0,0.25)';
-                primerVisible.style.transition = 'box-shadow 400ms ease-in-out';
-                try { primerVisible.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { /* ignore */ }
-                // Quitar el highlight después de 1.5s
-                setTimeout(() => {
-                    primerVisible.classList.remove('highlight-temporal');
-                    primerVisible.style.transition = '';
-                    primerVisible.style.boxShadow = '';
-                }, 1500);
-            }
-    }
-
-    // Event listener para el buscador
-    buscador.addEventListener('input', filtrarCatalogo);
-
-    // Event listeners para los botones de tipo
-    botonesTipo.forEach(boton => {
-        boton.addEventListener('click', function() {
-            // Si el botón ya está activo, lo desactivamos
-            if (this.classList.contains('active')) {
-                this.classList.remove('active');
-            } else {
-                // Desactivar todos los botones
-                botonesTipo.forEach(btn => btn.classList.remove('active'));
-                // Activar el botón clickeado
-                this.classList.add('active');
-            }
             filtrarCatalogo();
         });
     });
 
-    // Event listener para el select de género
-    selectGenero.addEventListener('change', filtrarCatalogo);
+    // Select género
+    document.getElementById("genero").addEventListener("change", filtrarCatalogo);
 
-    // Función para ordenar tarjetas
-    function sortCards(sortBy, direction) {
-        const cont = document.getElementById('contenedor-catalogo');
-        const cards = Array.from(cont.children);
-        
-        cards.sort((a, b) => {
-            let va = sortBy === 'title' 
-                ? a.querySelector('h3').textContent 
-                : a.dataset.year || '0';
-            let vb = sortBy === 'title' 
-                ? b.querySelector('h3').textContent 
-                : b.dataset.year || '0';
-                
-            if (sortBy === 'year') {
-                va = parseInt(va);
-                vb = parseInt(vb);
-            }
-            
-            return direction === 'asc' 
-                ? (va < vb ? -1 : va > vb ? 1 : 0)
-                : (va > vb ? -1 : va < vb ? 1 : 0);
-        });
-        
-        cards.forEach(card => cont.appendChild(card));
-        
-        // Actualizar botones activos
-        document.querySelectorAll('.sort-btn').forEach(btn => {
-            btn.classList.toggle('active', 
-                btn.dataset.sort === sortBy && btn.dataset.dir === direction);
-        });
-        
-        // Guardar preferencias
-        localStorage.setItem('catalogSort', JSON.stringify({ sortBy, direction }));
-    }
-
-    // Configurar botones de ordenamiento
-    document.querySelectorAll('.sort-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            sortCards(btn.dataset.sort, btn.dataset.dir);
+    // Botones ordernar
+    document.querySelectorAll(".sort-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            ordenarCatalogo(btn.dataset.sort, btn.dataset.dir);
         });
     });
-    
-    // Aplicar ordenamiento guardado y filtrado inicial
-    const savedSort = JSON.parse(localStorage.getItem('catalogSort') || 
-        '{"sortBy":"title","direction":"asc"}');
-    sortCards(savedSort.sortBy, savedSort.direction);
+}
+
+// Inicializar
+function init() {
+    generarCatalogo();
+    configurarEventos();
+
+    // Aplicar orden guardado
+    const savedSort = JSON.parse(localStorage.getItem("catalogSort") || 
+        '{"sortBy":"title", "direction":"asc"}');
+    ordenarCatalogo(savedSort.sortBy, savedSort.direction);
+
+    // --- NUEVO: Leer parámetro q del buscador del home ---
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+
+    if (q) {
+        const buscador = document.getElementById("buscador");
+        buscador.value = q;
+    }
+
     filtrarCatalogo();
-});
+}
+
+document.addEventListener("DOMContentLoaded", init);

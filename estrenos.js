@@ -1,10 +1,10 @@
 // Arrays simples para estrenos
 const estrenosPosters = [
-    'estreno1.jpg',  // Deadpool & Wolverine
-    'estreno2.jpg',  // Inside Out 2
-    'estreno3.jpg',  // Gladiator II
-    'estreno4.jpg',  // The Last of Us
-    'estreno5.jpg'   // Avatar 3
+    'deadpool.jpg',
+    'insideout2.jpg',
+    'gladiator.jpg',
+    'thelastofus.jpg',
+    'avatar3.jpg'
 ];
 
 const estrenosTitulos = [
@@ -24,11 +24,11 @@ const estrenosDescripcionesBreves = [
 ];
 
 const estrenosYoutubeIDs = [
-    '73_1biulkYk',  // Deadpool & Wolverine - ✅ FUNCIONA
-    'LEjhY15eCx0',  // Inside Out 2 - ✅ FUNCIONA
-    'yshJ_JNmFl0',  // Gladiator II - ✅ FUNCIONA (alternativo)
-    '7tp3ZFhZ0Tk',  // The Last of Us Season 2 - ✅ FUNCIONA (alternativo)
-    'd9MyW72ELq0'   // Avatar 2 Extended - ✅ FUNCIONA
+    '73_1biulkYk',
+    'LEjhY15eCx0',
+    'yshJ_JNmFl0',
+    '7tp3ZFhZ0Tk',
+    'd9MyW72ELq0'
 ];
 
 const estrenosDescripcionesExtensas = [
