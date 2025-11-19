@@ -435,7 +435,6 @@ function init() {
         '{"sortBy":"title", "direction":"asc"}');
     ordenarCatalogo(savedSort.sortBy, savedSort.direction);
 
-    // --- NUEVO: Leer parámetro q del buscador del home ---
     const params = new URLSearchParams(window.location.search);
     const q = params.get("q");
 

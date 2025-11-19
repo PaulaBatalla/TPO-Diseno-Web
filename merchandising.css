@@ -20,7 +20,10 @@
 }
 
 /* Main */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; padding: 0; 
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -29,7 +32,9 @@ body {
     scroll-behavior: smooth;
 }
 
-h1, h2, h3 { font-weight: 600; }
+h1, h2, h3 { 
+    font-weight: 600; 
+}
 
 /* Header */
 header {
@@ -40,24 +45,42 @@ header {
     border-bottom: 2px solid var(--blue);
 }
 
-.logo { display: flex; align-items: center; gap: 10px; }
-
-.logo img { width: 40px; height: 40px; }
-
-.logo h1 { font-size: 1.5rem; color: white; }
-
-.logo h1 a {
-    color: white; text-decoration: none; transition: opacity var(--transition);
+.logo { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
 }
 
-.logo h1 a:hover { opacity: 0.8; }
+.logo img {
+    width: auto;
+    height: 60px;
+}
+
+.logo h1 { 
+    font-size: 1.5rem; 
+    color: white; 
+}
+
+.logo h1 a {
+    color: white; 
+    text-decoration: none; 
+    transition: opacity var(--transition);
+}
+
+.logo h1 a:hover { 
+    opacity: 0.8; 
+}
 
 .nav a {
-    color: var(--text-light); margin: 0 15px; text-decoration: none;
+    color: var(--text-light); 
+    margin: 0 15px; 
+    text-decoration: none;
     transition: color var(--transition);
 }
 
-.nav a:hover { color: var(--blue); }
+.nav a:hover { 
+    color: var(--blue); 
+}
 
 .btn-carrito,
 .btn-pagina,
