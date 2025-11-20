@@ -80,7 +80,7 @@ function generarCarrusel() {
                 <div class="carousel-caption">
                     <h2>${carruselTitulos[i]}</h2>
                     <p>${carruselDescripciones[i]}</p>
-                    <a href="catalogo.html" class="btn">${carruselTextoBotones[i]}</a>
+                    <a href="catalogo.html" class="btn btn-carousel">${carruselTextoBotones[i]}</a>
                 </div>
             </div>
         `;
